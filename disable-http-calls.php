@@ -46,8 +46,12 @@ class RC_Disable_HTTP_Calls {
      */
     public static function settings() {
 		
+		//avoid php notice: undefined index
+		if( ! isset( $_GET['http_calls'] ) ) {
+			return;
+		}
 		// Update value
-		$action = $_GET['http_calls'];
+		$action =  $_GET['http_calls'];
 		
 		if( $action == 'on' ) {
 			update_option( 'http_calls', 1 );
